@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import { ConfigProvider } from "antd";
+import { Provider } from "react-redux";
+import { PersistGate } from "redux-persist/integration/react";
+
+import Routes from "./routes";
+
+import themeCustom from "./utils/themeCustom";
+
+import { persistor, store } from "./redux";
+
+import "./App.css";
+import "antd/dist/reset.css";
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <ConfigProvider theme={themeCustom}>
+          <Routes />
+        </ConfigProvider>
+      </PersistGate>
+    </Provider>
   );
 }
 
