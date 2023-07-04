@@ -3,6 +3,7 @@ import {
   PicRightOutlined,
   UserOutlined,
   VerticalAlignBottomOutlined,
+  BorderInnerOutlined,
 } from "@ant-design/icons";
 import { Button, Layout, Menu, theme } from "antd";
 import { useState } from "react";
@@ -11,7 +12,9 @@ import logo from "../assets/logo.png";
 import Contentdies from "../content";
 import ContentReport from "../contentReport";
 import ContentDetail from "../contentDetail";
+import ContentListMaintenance from "../contentListMaintenance";
 import Clock from "../clock";
+import CurrentDate from "../currentDate";
 
 const { Header, Sider, Content } = Layout;
 const Sidebar = () => {
@@ -35,6 +38,8 @@ const Sidebar = () => {
     contentComponent = <ContentReport />;
   } else if (activeKey === "2") {
     contentComponent = <ContentDetail />;
+  } else if (activeKey === "4") {
+    contentComponent = <ContentListMaintenance />;
   }
 
   const menuItems = [
@@ -52,6 +57,11 @@ const Sidebar = () => {
       key: "3",
       icon: <VerticalAlignBottomOutlined />,
       label: "Report",
+    },
+    {
+      key: "4",
+      icon: <BorderInnerOutlined />,
+      label: "List Maintenance",
     },
   ];
 
@@ -104,8 +114,18 @@ const Sidebar = () => {
               }}
             />
           </div>
-          <div style={{ paddingRight: "30px" }}>
-            <Clock />
+
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              paddingRight: "30px",
+            }}
+          >
+            <CurrentDate />
+            <span style={{ marginLeft: "10px" }}>
+              <Clock />
+            </span>
           </div>
         </Header>
 
