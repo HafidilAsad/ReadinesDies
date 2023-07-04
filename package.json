@@ -20,6 +20,9 @@
     "reduxjs-toolkit-persist": "^7.2.1",
     "web-vitals": "^2.1.4"
   },
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.15.0"
+  },
   "scripts": {
     "start": "set PORT=3611 && react-scripts start",
     "build": "react-scripts build",
